@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>com.example.ai-debugger</id>
+    <name>AI Debugger</name>
+    <vendor>Your Company</vendor>
+    <description>AI-powered debugger using OpenAI</description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>JavaScript</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.example.aidebugger.services.OpenAIService"/>
+        <applicationConfigurable instance="com.example.aidebugger.settings.AIDebuggerSettingsConfigurable"/>
+    </extensions>
+
+    <actions>
+        <action id="AIDebugger.AnalyzeStep" 
+                class="com.example.aidebugger.actions.AnalyzeDebugStepAction"
+                text="Debug with AI"
+                description="Analyze current debug step with AI">
+            <add-to-group group-id="DebuggerActions" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl A"/>
+        </action>
+    </actions>
+</idea-plugin>
